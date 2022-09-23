@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIR=./vendor/phalcon/devtools
+if [ -d "$DIR" ]; then
+    ./vendor/phalcon/devtools/phalcon $@
+else
+    echo $'\n'
+    echo "phalcon devtools not installed local"
+    echo "install phalcon devtools from 'composer require phalcon/devtools --dev'"
+    echo $'\n'
+fi
