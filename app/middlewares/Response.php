@@ -24,6 +24,11 @@ class Response implements MiddlewareInterface {
             $result['message'] = $returned[1] ?? $returned['message'] ?? 'success';
             $result['data'] = $returned[2] ?? $returned['data'] ?? [];
         }
+
+        if(getDotEnv('ENVIROMENT', 'production') !== 'production'){
+            $result['errors'] = SystemErrorCatcher::getErrors();
+        }
+
         $response = new PhalconResponse();
         $response->setJsonContent($result);
         $response->setStatusCode($returned[3] ?? $returned['code'] ?? 200);
