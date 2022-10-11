@@ -1,6 +1,6 @@
 <?php
 
-class WelcomeController{
+class WelcomeController extends Controller{
 
     public function index(){
         return [
