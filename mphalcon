@@ -1,11 +1,31 @@
 #!/bin/bash
 
-DIR=./vendor/phalcon/devtools
-if [ -d "$DIR" ]; then
-    ./vendor/phalcon/devtools/phalcon $@
+#bash-scripts validations
+BS_DIR=./bash-scripts
+if [ ! -d "$BS_DIR" ]; then
+    git clone https://github.com/Michaelv55/bash-scripts.git
 else
+    echo "repo bash-scripts updating...";
+    git -C ./bash-scripts pull
+fi
+
+#os validations
+OS=$("$BS_DIR/getOs.sh")
+if [[ $OS -eq "OSX" ]]; then
+    if [[ $(command -v brew) == "" ]]; then
+        echo "Brew not installed. Brew is required to continue the process on $OS."
+        exit 1
+    fi
+    if [[ `brew list -1 | grep "gnu-getopt"` != "gnu-getopt" ]]; then
+        brew install gnu-getopt
+    fi
+fi
+
+DIR_DEVTOOLS=./vendor/phalcon/devtools
+if [ ! -d "$DIR_DEVTOOLS" ]; then
     echo $'\n'
     echo "phalcon devtools not installed local"
     echo "install phalcon devtools from 'composer require phalcon/devtools --dev'"
     echo $'\n'
+    exit 1
 fi
