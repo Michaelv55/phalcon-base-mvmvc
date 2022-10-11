@@ -31,3 +31,20 @@ if [ ! -d "$DIR_DEVTOOLS" ]; then
     echo $'\n'
     exit 1
 fi
+
+OPTION="$1"
+case $OPTION in
+    "info"|"i") "$DIR_DEVTOOLS"/phalcon $1 ;;
+    "commands"|"list"|"enumerate") "$DIR_DEVTOOLS"/phalcon $1 ;;
+    "controller"|"create-controller") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "module") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "model") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "all-models") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "project") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "scaffold") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "migration") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "webtools") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "serve") "$DIR_DEVTOOLS"/phalcon $@ ;;
+    "console") "$DIR_DEVTOOLS"/phalcon $1 ;;
+    *) "$DIR_DEVTOOLS"/phalcon $@ ;;
+esac
