@@ -17,7 +17,9 @@ if [[ $OS -eq "OSX" ]]; then
         exit 1
     fi
     if [[ `brew list -1 | grep "gnu-getopt"` != "gnu-getopt" ]]; then
-        brew install gnu-getopt
+        echo "gnu-getopt is required. use: 'brew install gnu-getopt'"
+        echo "Then follow directions from brew to add to your local path: echo 'export PATH= \"/opt/homebrew/opt/gnu-getopt/bin:\$PATH\" >> ~/.zshrc"
+        exit 1
     fi
 fi
 
