@@ -1,3 +1,5 @@
+#!/opt/homebrew/bin/bash
+#!/usr/local/bin/bash
 #!/bin/bash
 
 #bash-scripts validations
@@ -21,6 +23,16 @@ if [[ $OS -eq "OSX" ]]; then
         echo "Then follow directions from brew to add to your local path: echo 'export PATH= \"/opt/homebrew/opt/gnu-getopt/bin:\$PATH\" >> ~/.zshrc"
         exit 1
     fi
+fi
+
+BASH_V=`echo $BASH_VERSION | cut -c1-1`;
+if [[ "$BASH_V" -lt 4 ]]; then
+    echo "Bash version 4 or higher is required. Actual version $BASH_VERSION"
+    echo "use: 'brew upgrade' and then 'brew install bash'"
+    echo "open with vim /etc/shells and add hombrew bash route (which -a bash): '/opt/homebrew/bin/bash'"
+    echo "set default shell: sudo chsh -s /opt/homebrew/bin/bash"
+    echo "restart terminal and test 'bash --version'"
+    exit 1
 fi
 
 DIR_DEVTOOLS=./vendor/phalcon/devtools
