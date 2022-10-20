@@ -1,22 +1,22 @@
 <?php
 
 /**
+ * Local variables
+ * @var Phalcon\Config $config
+ */
+$config;
+
+/**
  * Registering an autoloader
  */
 $loader = new \Phalcon\Loader();
 
-$loader->registerDirs([
-    $config->application->modelsDir,
-    $config->application->controllersDir,
-    $config->application->middlewareDir,
-    $config->application->helpersDir,
-]);
+$loader->registerDirs(array_values($config->directories->toArray()));
 
-$loader->registerNamespaces([
-    'App\Models' => $config->application->modelsDir,
-    'App\Controllers' => $config->application->controllersDir,
-    'App\Middleware' => $config->application->middlewareDir,
-    'App\Helpers' => $config->application->helpersDir
-]);
+$nameSpaces = array_combine(array_map(function($item) use ($config){
+    return $config->nameSpace . '\\' . ucfirst($item);
+}, array_keys($config->directories->toArray())), $config->directories->toArray());
+
+$loader->registerNamespaces($nameSpaces);
 
 $loader->register();

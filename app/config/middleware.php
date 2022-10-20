@@ -8,10 +8,10 @@ use Phalcon\Events\Manager;
  */
 $app;
 
-foreach ($app->config->middleware->before as $key => $value) {
+foreach ($app->config->middlewares->before as $key => $value) {
     $app->before(new $value());
 }
 
-foreach ($app->config->middleware->after as $key => $value) {
+foreach ($app->config->middlewares->after as $key => $value) {
     $app->after(new $value());
 }

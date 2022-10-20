@@ -8,12 +8,11 @@ $app;
 
 class AutoloadRoutes{
 
-    public function __construct($context = null){
-        $this->load($context->config->application->routesDir, $context);
+    public function __construct(\Phalcon\Mvc\Micro $app){
+        $this->load($app->config->directories->routes, $app);
     }
 
-    private function load($path = __DIR__, $context = null){
-        $app = $context;
+    private function load($path = __DIR__, ?\Phalcon\Mvc\Micro $app = null){
         $directories = array_diff(scandir($path), ['.', '..', 'autoload.php']);
         foreach ($directories as $key => $value) {
             $directory = $path.DIRECTORY_SEPARATOR.$value;
@@ -23,7 +22,7 @@ class AutoloadRoutes{
                 include $directory;
             }
         }
-    } 
+    }
 
 }
 
