@@ -5,7 +5,7 @@
  */
 
 return [
-    'database' => [
+    'main' => [
         'adapter' => getDotEnv('DB_ADAPTER', 'Mysql'),
         'host' => getDotEnv('DB_HOST', 'localhost'),
         'username' => getDotEnv('DB_USERNAME', 'root'),

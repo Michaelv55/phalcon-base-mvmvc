@@ -5,10 +5,17 @@ use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Url as UrlResolver;
 
 /**
- * Shared configuration service
+ * Shared phalcon Devtools configuration service
  */
 $di->setShared('config', function () {
     return include APP_PATH . "/config/config.php";
+});
+
+/**
+ * Shared app configuration service
+ */
+$di->setShared('configuration', function () {
+    return include APP_PATH . "/config/configuration.php";
 });
 
 /**

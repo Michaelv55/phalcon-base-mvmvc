@@ -36,7 +36,7 @@ include APP_PATH . '/config/services.php';
 /**
  * Get config service for use in inline setup below
  */
-$config = $di->getConfig();
+$config = $di->getConfiguration();
 
 /**
  * Include Autoloader
