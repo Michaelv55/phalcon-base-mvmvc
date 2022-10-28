@@ -14,7 +14,8 @@ set_exception_handler(function($exception){
         ->setJsonContent([
             'success' => false,
             'message' => 'Exception not controlled: '.$exception->getMessage(),
-            'data' => $exception->getTrace(),
+            'data' => $exception->getTraceAsString(),
+            // 'data' => $exception->getTrace(),
             'errors' => SystemErrorCatcher::getErrors()
         ])->send();
 });
