@@ -1,0 +1,7 @@
+#!/opt/homebrew/bin/bash
+#!/usr/local/bin/bash
+#!/bin/bash
+
+DIR_PHPUNIT=./vendor/bin/phpunit
+
+$DIR_PHPUNIT $@

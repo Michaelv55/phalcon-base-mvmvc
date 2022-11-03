@@ -5,6 +5,13 @@
     "require-dev": {
         "symfony/var-dumper": "^5.4",
         "phalcon/devtools": "^4.2",
-        "phalcon/migrations": "^2.2"
+        "phalcon/migrations": "^2.2",
+        "phpunit/phpunit": "^9.5",
+        "phalcon/incubator-test": "^v1.0.0-alpha.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
     }
 }

@@ -20,6 +20,8 @@ $dirConfig = [
     'helpers' => APP_PATH . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR,
     'migrations' => APP_PATH . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR,
     'views' => APP_PATH . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR,
+    'businessLogic' => APP_PATH . DIRECTORY_SEPARATOR . 'businessLogic' . DIRECTORY_SEPARATOR,
+    'tests' => APP_PATH . DIRECTORY_SEPARATOR . 'tests' . DIRECTORY_SEPARATOR
 ];
 
 $middlewaresConfig = [

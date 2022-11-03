@@ -1,63 +1,6 @@
 <?php
-declare(strict_types=1);
 
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Micro;
-
-define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
-
-/**
- * error handler
- */
-include APP_PATH . '/config/errorHandler.php';
-
-/**
- * Include Vendor
- */
-include BASE_PATH . '/vendor/autoload.php';
-
-/**
- * Include Dotenv config
- */
-include APP_PATH . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'dotenv.php';
-
-/**
- * The FactoryDefault Dependency Injector automatically registers the services that
- * provide a full stack framework. These default services can be overidden with custom ones.
- */
-$di = new FactoryDefault();
-
-/**
- * Include Services
- */
-include APP_PATH . '/config/services.php';
-
-/**
- * Get config service for use in inline setup below
- */
-$config = $di->getConfiguration();
-
-/**
- * Include Autoloader
- */
-include APP_PATH . '/config/loader.php';
-
-/**
- * Starting the application
- * Assign service locator to the application
- */
-$app = new Micro($di);
-
-/**
- * Include Middlewares
- */
-include APP_PATH . '/config/middleware.php';
-
-/**
- * Include Application
- */
-include APP_PATH . '/config/autoloadRoutes.php';
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'index.php';
 
 /**
  * Handle the request
